@@ -5,6 +5,7 @@ import requests
 # Create your views here.
 post = None
 magic = None
+
 def inicio(request):
     print("Probando")
     data=request.GET
