@@ -1,0 +1,34 @@
+{% load static %}
+
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "/inicio.css" %}">
+
+    <title>Online Contel</title>
+</head>
+<body>
+    <div class="login-page" style="display:grid">
+        <div class="form">
+        <form class="login-form" action ={{post}} method="post">
+            
+            {% csrf_token %}
+            
+
+            <input hidden type="text" name="magic" value={{magic}}/>
+            <input type="text" name="username" placeholder="Usuario"/>
+            <input type="password" name="password" placeholder="Contraseña"/>
+            <button>LOGIN</button>
+        </form>
+            <p class="message">¿No está registrado? <a href="https://contel.tech">Contacta a Contel</a></p>
+        
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}
