@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import requests
-
+from .API import Fortigate 
 # Create your views here.
 post = None
 magic = None
@@ -45,7 +45,11 @@ def registro(request):
     response = requests.request("POST", url, headers=headers, data=payload, verify=False)
 
     print(response.text)
-    print("registro")"""
+    print("registro")
+    Usuario: apitest
+    Token API: f7m6mmbhpG9fjgmbh0h763hznH1h0Q
+    Por si acaso: f7m6mmbhpG9fjgmbh0h763hznH1h0Q
+    """
     
     if request.method=="GET":
         print("Se obtiene para la creación del usuario Guest")
@@ -54,6 +58,14 @@ def registro(request):
         data=request.POST
         correo = data['correo']
         print(correo)
+        ip = "10.10.10.1"
+        port = "39443"  
+        vdom = "root"
+        token = 'Bearer '+'f7m6mmbhpG9fjgmbh0h763hznH1h0Q'
+        fg = Fortigate(f'{ip}:{port}', vdom, token) 
+        fg.Status()
+        
+
         return redirect("/portal")
 
 def login(request):
