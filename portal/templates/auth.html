@@ -31,7 +31,7 @@
 </body>
 </html>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', ()=> {
         var video = document.getElementById('video'); //Referencia a objeto HTML
         video.onended = function () { //Evento de video finalizado
         
@@ -39,7 +39,7 @@
             displayForm();
             }
         }
-    });
+    );
 
     function displayForm(){
         document.getElementById("guest").style.display = 'block';
@@ -48,7 +48,7 @@
     setTimeout(()=>{
         displayForm();
     }
-    ,100000);
+    ,10000);
 
 </script>
 
