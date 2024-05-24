@@ -68,10 +68,22 @@ def registro(request):
         fg.Status()
         user_group = "GuestPiramides"
         fg.AddUserToGroup(user_group,correo)
-        fg.GetGroupMembers(user_group)
+        test = fg.GetGroupMembers(user_group)
+        """https://10.10.45.1:1003/fgtauth&magic=000f038ce6dc3916&usermac=e2:f9:a0:a6:6d:a7&apmac=80:80:2c:38:e7:a8&apip=10.10.10.221&userip=10.10.45.2&ssid=prueba_contel&apname=PROVISIONAL%20OFICINA%204-B&bssid=80:80:2c:38:e7:b9"""
 
 
-        return redirect("/portal")
+        url = request.session['post']
+        print(url)
+        payload = {'json':
+                        {
+                        'magic':request.session['magic'],
+                        'username':test,
+                        'password':'fortinet',
+                        }
+                        }
+        print("Intento")
+
+        return redirect(f'{url}{magic}&username={test}&password=fortinet')
 
 def login(request):
     print("login")
