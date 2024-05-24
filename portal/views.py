@@ -64,7 +64,9 @@ def registro(request):
         token = 'Bearer '+'f7m6mmbhpG9fjgmbh0h763hznH1h0Q'
         fg = Fortigate(f'{ip}:{port}', vdom, token) 
         fg.Status()
-        
+        user_group = "GuestPiramides"
+        fg.AddUserToGroup(user_group,correo)
+
 
         return redirect("/portal")
 
