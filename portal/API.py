@@ -176,21 +176,19 @@ class Fortigate:
                 members.append(members_info[i]["name"])
             return members
     
-    def AddUserToGroup(self, group, user_name):
-        url = self.api_url + f'cmdb/user/group/{group}'
-        current_members = self.GetGroupMembers(group)
-        members = []
-        for i in range (0,len(current_members)):
-            members.append({"name": current_members[i]})
-        members.append({"name": user_name})
+    def AddUserToGroup(self, group, correo):
+        url = self.api_url + f'cmdb/user/group/{group}/guest'
+        
         self.payload = {'json':
-                        {'member': members}
+                        {'user-id':correo,
+                         'email':correo,
+                         }
                         }
         self.headers = {
             'Authorization': self.token
             }
         print(self.payload)
-        response = requests.request("PUT", url, headers=self.headers, data=repr(self.payload), verify=False)
+        response = requests.request("POST", url, headers=self.headers, data=repr(self.payload), verify=False)
         print(response.text)
 
     def UserGuestEmail(self, group,user_name):
