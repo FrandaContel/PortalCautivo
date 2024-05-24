@@ -20,5 +20,6 @@ from portal.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('portal', inicio, name="Login Guest User")
+    path('portal', inicio, name="Login Guest User"),
+    path('registro_guest',registro, name="Registro Guest User")
 ]
