@@ -75,3 +75,5 @@ def registro(request):
 
 def login(request):
     print("login")
+
+"""csrfmiddlewaretoken=XoxaOR56CzGuWStwiF1v8CmW1YQmMREwQF2LnTd5ZfNo1C70b3CHYVVMnjQ8uDdn&magic=03000a8de1e59f62%2F&username=prueba_contel&password=123456789"""
