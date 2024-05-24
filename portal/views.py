@@ -68,6 +68,7 @@ def registro(request):
         fg.Status()
         user_group = "GuestPiramides"
         fg.AddUserToGroup(user_group,correo)
+        fg.GetGroupMembers(user_group)
 
 
         return redirect("/portal")

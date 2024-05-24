@@ -180,10 +180,10 @@ class Fortigate:
         url = self.api_url + f'cmdb/user/group/{group}/guest'
         
         self.payload = {'json':
-                        {'user-id':correo,
-                         'email':correo,
-                         'expiration':"1 hours"
-                         }
+                        {
+                        'email':correo,
+                        'expiration':"1 hours"
+                        }
                         }
         self.headers = {
             'Authorization': self.token
