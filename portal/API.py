@@ -170,10 +170,11 @@ class Fortigate:
             #Convertimos la respuesta a formato json para manejar mejor los datos
             response = json.loads(response.text)
             #Se itera por los elementos de la lista "results", donde cada elemento contiene la informacion de un usuario
-            
+            print(response)
             members_info = response['results'][0]['member'] #Se agregan los nombres de los usuarios a una lista vacia
             for i in range(0, len(members_info)):
                 members.append(members_info[i]["name"])
+            print(members)
             return members
     
     def AddUserToGroup(self, group, correo):
@@ -182,7 +183,7 @@ class Fortigate:
         self.payload = {'json':
                         {
                         'email':correo,
-                        'expiration':"1 hours"
+                        'expiration':3600
                         }
                         }
         self.headers = {
