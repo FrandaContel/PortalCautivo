@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "/inicio.css" %}">
-
     <title>Online Contel</title>
 </head>
 <body>
@@ -32,14 +31,16 @@
 </body>
 </html>
 <script>
-    var video = videojs('video').ready(function(){
-        var player = this;
-        player.on('ended',function(){
-            alert('video is done!')
-
-        });
-
+    document.addEventListener('DOMContentLoaded', () => {
+        var video = document.getElementById('video'); //Referencia a objeto HTML
+        video.onended = function () { //Evento de video finalizado
+        
+            console.log('fin');
+            displayForm();
+            }
+        }
     });
+
     function displayForm(){
         document.getElementById("guest").style.display = 'block';
         document.getElementById("video").style.display = 'none';
