@@ -82,14 +82,16 @@ def registro(request):
                         }
                         }
         print("Intento")
-        try:
-            cn = requests.post(url,data=repr(payload), verify=False)
-            print(cn.text)
-        except:
-            print("No funciono")
-        return redirect(f'{url}/{magic}/&username="prueba_contel"&password=fortinet')
 
-def login(request):
-    print("login")
+        return render()
+
+def auth(request):
+    print("Se obtiene para la creación del usuario Guest")
+    return render(request,"auth.html",{ 
+            'magic':magic,
+            'post':post,
+            'username':"prueba_contel",
+            'passwd':"123456789"
+            })
 
 """https://10.10.45.1:1003/fgtauth/csrfmiddlewaretoken=3rFLJci9xQh4fUOE3yLm0tJ0wvaWSWJ1&magic=070f0889e5fdd1ed&username=prueba_contel&password=123456789"""
