@@ -172,12 +172,10 @@ class Fortigate:
             #Convertimos la respuesta a formato json para manejar mejor los datos
             response = json.loads(response.text)
             #Se itera por los elementos de la lista "results", donde cada elemento contiene la informacion de un usuario
-            print(response)
             members_info = response['results'][0]['guest'] #Se agregan los nombres de los usuarios a una lista vacia
             for i in range(0, len(members_info)):
                 if (members_info[i]['expiration']=='3600'):
                     members.append(members_info[i]["user-id"])
-            print(members)
             print("lol")
             return members[0]
     
@@ -194,9 +192,8 @@ class Fortigate:
         self.headers = {
             'Authorization': self.token
             }
-        print(self.payload)
+        
         response = requests.request("POST", url, headers=self.headers, data=repr(self.payload), verify=False)
-        print(response.text)
 
     def UserGuestEmail(self, group,user_name):
         url = self.api_url + f'monitor/user/guest/email'
