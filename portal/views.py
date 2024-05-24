@@ -20,6 +20,8 @@ def inicio(request):
     else:
         magic = request.session["magic"]
         post = request.session["post"]
+        print(magic)
+        print(post)
 
     if request.method=="GET":
         print("Iniciando sesión")
