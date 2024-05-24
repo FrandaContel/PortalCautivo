@@ -8,12 +8,17 @@ magic = None
 def inicio(request):
     print("Probando")
     data=request.GET
-    magic = request.GET['magic']
-    post = request.GET['post']
-    request.session["magic"] = magic
-    request.session["post"] = post
-    print(request.session["magic"])
-    print(request.session["post"])
+    if (data):
+        magic = request.GET['magic']
+        post = request.GET['post']
+        request.session["magic"] = magic
+        request.session["post"] = post
+        print(request.session["magic"])
+        print(request.session["post"])
+    else:
+        magic = request.session["magic"]
+        post = request.session["post"]
+        
     if request.method=="GET":
         print("Iniciando sesión")
         return render(request,"login.html",{ 
