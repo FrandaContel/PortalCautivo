@@ -32,6 +32,14 @@
 </body>
 </html>
 <script>
+    var video = videojs('video').ready(function(){
+        var player = this;
+        player.on('ended',function(){
+            alert('video is done!')
+
+        });
+
+    });
     function displayForm(){
         document.getElementById("guest").style.display = 'block';
         document.getElementById("video").style.display = 'none';
@@ -39,7 +47,7 @@
     setTimeout(()=>{
         displayForm();
     }
-    ,10000);
+    ,100000);
 
 </script>
 
