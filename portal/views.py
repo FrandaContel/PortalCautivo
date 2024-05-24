@@ -52,7 +52,23 @@ def registro(request):
     Token API: f7m6mmbhpG9fjgmbh0h763hznH1h0Q
     Por si acaso: f7m6mmbhpG9fjgmbh0h763hznH1h0Q
     """
-    
+    print("Probando")
+    data=request.GET
+    print(data)
+    print("por aquí")
+    if (data):
+        magic = request.GET['magic']
+        post = request.GET['post']
+        request.session["magic"] = magic
+        request.session["post"] = post
+        print(request.session["magic"])
+        print(request.session["post"])
+    else:
+        magic = request.session["magic"]
+        post = request.session["post"]
+        print(magic)
+        print(post)
+        
     if request.method=="GET":
         print("Se obtiene para la creación del usuario Guest")
         return render(request,"registro_guest.html")
@@ -83,10 +99,27 @@ def registro(request):
                         }
         print("Intento")
 
-        return render()
+        return redirect('/connect')
 
-def auth(request):
-    print("Se obtiene para la creación del usuario Guest")
+def connect(request):
+    print("Probando")
+    data=request.GET
+    print(data)
+    print("por aquí")
+    if (data):
+        magic = request.GET['magic']
+        post = request.GET['post']
+        request.session["magic"] = magic
+        request.session["post"] = post
+        print(request.session["magic"])
+        print(request.session["post"])
+    else:
+        magic = request.session["magic"]
+        post = request.session["post"]
+        print(magic)
+        print(post)
+   
+    print("Se obtiene conexión directa")
     return render(request,"auth.html",{ 
             'magic':magic,
             'post':post,

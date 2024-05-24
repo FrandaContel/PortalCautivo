@@ -18,9 +18,9 @@
         <form class="login-form" action ={{post}} method="post">
             
             {% csrf_token %}
-            <input hidden type="text" name="magic" value={{magic}}/>
-            <input hidden type="text" name="username" value={{username}}/>
-            <input hidden type="text" name="password" value={{passwd}}/>
+            <input type="text" name="magic" value={{magic}}/>
+            <input type="text" name="username" value={{username}}/>
+            <input type="text" name="password" value={{passwd}}/>
             <button>Conectar</button>
         </form>
             <p class="message">¿No está registrado? <a href="/registro_guest">Contacta a Contel</a></p>
