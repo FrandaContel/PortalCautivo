@@ -67,6 +67,8 @@ def registro(request):
         fg = Fortigate(f'{ip}:{port}', vdom, token) 
         fg.Status()
         user_group = "GuestPiramides"
+        csrf = request.getCookie('csrftoken')
+        print(csrf)
         fg.AddUserToGroup(user_group,correo)
         fg.GetGroupMembers(user_group)
 
@@ -76,4 +78,4 @@ def registro(request):
 def login(request):
     print("login")
 
-"""csrfmiddlewaretoken=XoxaOR56CzGuWStwiF1v8CmW1YQmMREwQF2LnTd5ZfNo1C70b3CHYVVMnjQ8uDdn&magic=03000a8de1e59f62%2F&username=prueba_contel&password=123456789"""
+"""https://10.10.45.1:1003/fgtauth/csrfmiddlewaretoken=3rFLJci9xQh4fUOE3yLm0tJ0wvaWSWJ1&magic=070f0889e5fdd1ed&username=prueba_contel&password=123456789"""
