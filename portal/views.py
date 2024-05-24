@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import requests
 
@@ -54,10 +54,7 @@ def registro(request):
         data=request.POST
         correo = data['correo']
         print(correo)
-        return render(request,"login.html",{ 
-            'magic':magic,
-            'post':post,
-            })
+        return redirect("/portal")
 
 def login(request):
     print("login")
