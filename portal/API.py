@@ -182,6 +182,7 @@ class Fortigate:
         self.payload = {'json':
                         {'user-id':correo,
                          'email':correo,
+                         'expiration':"1 hours"
                          }
                         }
         self.headers = {
