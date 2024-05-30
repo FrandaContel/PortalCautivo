@@ -20,9 +20,9 @@
         <form id = "guest" style="display:none" class="login-form" action ={{post}} method="post">
             
             {% csrf_token %}
-            <input type="text" name="magic" value={{magic}}/>
-            <input type="text" name="username" value={{username}}/>
-            <input type="text" name="password" value={{passwd}}/>
+            <input hidden id = 'magicnum' type="text" name="magic" value={{magic}}/>
+            <input hidden id = 'usuario'type="text" name="username" value={{username}}/>
+            <input hidden id = 'clave' type="text" name="password" value={{passwd}}/>
             <button>Conectar</button>
         </form>
             <p class="message">¿No está registrado? <a href="/registro_guest">Contacta a Contel</a></p>
@@ -44,6 +44,15 @@
     function displayForm(){
         document.getElementById("guest").style.display = 'block';
         document.getElementById("video").style.display = 'none';
+        let magicnum = document.getElementById('magicnum').value
+        let magicnum2 = magicnum.substring(0,magicnum.length-1);
+        document.getElementById('magicnum').value = magicnum2;
+        let username = document.getElementById('usuario').value
+        let username2 = username.substring(0,username.length-1);
+        document.getElementById('usuario').value = username2;
+        let clave = document.getElementById('clave').value
+        let clave2 = clave.substring(0,clave.length-1);
+        document.getElementById('clave').value = clave2;
     }
     
 

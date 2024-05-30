@@ -174,7 +174,7 @@ class Fortigate:
             #Se itera por los elementos de la lista "results", donde cada elemento contiene la informacion de un usuario
             members_info = response['results'][0]['guest'] #Se agregan los nombres de los usuarios a una lista vacia
             for i in range(0, len(members_info)):
-                if (members_info[i]['expiration']=='3600'):
+                if (members_info[i]['expiration']=='300'):
                     members.append(members_info[i]["user-id"])
             print("lol")
             return members[0]
@@ -184,9 +184,9 @@ class Fortigate:
         
         self.payload = {'json':
                         {
-                        'email':correo,
+                        'correo':correo,
                         'password':'fortinet',
-                        'expiration':3600
+                        'expiration':300
                         }
                         }
         self.headers = {
