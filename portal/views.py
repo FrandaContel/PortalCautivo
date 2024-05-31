@@ -128,14 +128,20 @@ def connect(request):
         print(magic)
         print(post)
     
-    usuario = test
-    passwd = 'fortinet'
-    print("Se obtiene conexión directa")
-    return render(request,"auth.html",{ 
-            'magic':magic,
-            'post':post,
-            'username':usuario,
-            'passwd':passwd
-            })
+    if request.method=="GET":
+        usuario = test
+        passwd = 'fortinet'
+        print("Se obtiene conexión directa")
+        return render(request,"auth.html",{ 
+                'magic':magic,
+                'post':post,
+                'username':usuario,
+                'passwd':passwd
+                })
+    else:
+        test = fg.LoginCheck(usuario,passwd)
+        print("Listo")
+        print(test)
+    
 
 """https://10.10.45.1:1003/fgtauth/csrfmiddlewaretoken=3rFLJci9xQh4fUOE3yLm0tJ0wvaWSWJ1&magic=070f0889e5fdd1ed&username=prueba_contel&password=123456789"""

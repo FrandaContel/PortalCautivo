@@ -51,6 +51,19 @@ class Fortigate:
             data.append("500")
             return data
 
+    def Logincheck(self,username,passwd):
+        #https://10.10.10.1:39443/logincheck
+        url = self.api_url + f'logincheck'
+        self.headers = {
+            'Authorization': self.token
+        }
+        try:
+            print(url)
+            print(self.token)
+            response = requests.request("GET", url, headers=self.headers, verify=False)
+            return response
+        except:
+            return response
     #Función para el respaldo del equipo
     def BackUp(self):
         url = self.api_url + 'monitor/system/config/backup?destination=file&scope=global'
