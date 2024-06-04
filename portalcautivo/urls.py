@@ -20,7 +20,5 @@ from portal.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('portal', connect, name="Login Guest User"),
-    path('registro_guest',registro, name="Registro Guest User"),
-    path('connect',connect,name="Proceder a la autenticación")
+    path('portal-bnc', connect, name="Auto-Login Guest User"),
 ]
