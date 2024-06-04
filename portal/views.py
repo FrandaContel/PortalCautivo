@@ -116,15 +116,11 @@ def connect(request):
     fg.AddUserToGroup(user_group,'algo@gmail.com')
     test = fg.GetGroupMembers(user_group)
     if (data):
+        global magic, post
         magic = request.GET['magic']
         post = request.GET['post']
-        request.session["magic"] = magic
-        request.session["post"] = post
-        print(request.session["magic"])
-        print(request.session["post"])
+        
     else:
-        magic = request.session["magic"]
-        post = request.session["post"]
         print(magic)
         print(post)
     
@@ -139,9 +135,19 @@ def connect(request):
                 'passwd':passwd
                 })
     else:
-        test = fg.LoginCheck(usuario,passwd)
+        headers_test = {'Connection': 'keep-alive'}
+            
+        print("POST")
+        passwd = 'fortinet'
+        middle = request.POST['csrfmiddlewaretoken']
+        print(middle)
+        #login = fg.LoginCheck(test,passwd)
+        respuesta = requests.request("POST",f"https://10.10.45.1:1003/fgtauth/csrfmiddlewaretoken={middle}&magic={magic}&username={test}&password={passwd}",headers=headers_test,verify=False,timeout=40)
         print("Listo")
-        print(test)
+        print(respuesta.text)
     
 
+def success(request):
+    print("listo")
+    return render(request,"success.html")
 """https://10.10.45.1:1003/fgtauth/csrfmiddlewaretoken=3rFLJci9xQh4fUOE3yLm0tJ0wvaWSWJ1&magic=070f0889e5fdd1ed&username=prueba_contel&password=123456789"""

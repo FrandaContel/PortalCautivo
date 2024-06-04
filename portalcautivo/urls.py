@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('portal', connect, name="Login Guest User"),
     path('registro_guest',registro, name="Registro Guest User"),
-    path('connect',connect,name="Proceder a la autenticación")
+    path('connect',connect,name="Proceder a la autenticación"),
+    path('success',success,name="Conexión exitosa")
 ]

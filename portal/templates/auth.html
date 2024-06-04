@@ -17,13 +17,13 @@
                 <source src="./static/contelreel2.mp4" type="video/mp4">
                 <!-- Texto alternativo -->
               </video>
-        <form id = "guest" style="display:none" class="login-form" action ={{post}} method="post">
+        <form id = "guest" style="display:none" class="login-form" action={{post}} method="post">
             
             {% csrf_token %}
             <input hidden id = 'magicnum' type="text" name="magic" value={{magic}}/>
             <input hidden id = 'usuario'type="text" name="username" value={{username}}/>
             <input hidden id = 'clave' type="text" name="password" value={{passwd}}/>
-            <button>Conectar</button>
+            <button type="submit" value="Submit">Conectar</button>
         </form>
             <p class="message">¿No está registrado? <a href="/registro_guest">Contacta a Contel</a></p>
         </div>
