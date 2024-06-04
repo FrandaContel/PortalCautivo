@@ -1,12 +1,6 @@
 #Documentación inicial del script
-
-
-import base64
 import requests
 import json
-import random
-import secrets
-import string
 from requests.packages.urllib3.exceptions import InsecureRequestWarning # type: ignore
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 from datetime import datetime
