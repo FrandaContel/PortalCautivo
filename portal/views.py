@@ -7,10 +7,6 @@ post = None
 magic = None
 
 def connect(request):
-    print("Probando")
-    data=request.GET
-    #print(data)
-    print("por aquí")
     ip = "10.10.10.1"
     port = "39443"  
     vdom = "root"
@@ -20,20 +16,10 @@ def connect(request):
     user_group = "GuestPiramides"
     fg.AddUserToGroup(user_group,'algo@gmail.com')
     test = fg.GetGroupMembers(user_group)
-    if (data):
-        magic = request.GET['magic']
-        post = request.GET['post']
-        request.session["magic"] = magic
-        request.session["post"] = post
-        print(request.session["magic"])
-        print(request.session["post"])
-    else:
-        magic = request.session["magic"]
-        post = request.session["post"]
-        print(magic)
-        print(post)
     
     if request.method=="GET":
+        magic = request.GET['magic']
+        post = request.GET['post']
         usuario = test
         passwd = 'fortinet'
         print("Se obtiene conexión directa")
