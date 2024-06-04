@@ -9,7 +9,7 @@ magic = None
 def connect(request):
     print("Probando")
     data=request.GET
-    #print(data)
+    print(data)
     print("por aquí")
     ip = "10.10.10.1"
     port = "39443"  
