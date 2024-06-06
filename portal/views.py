@@ -16,13 +16,13 @@ def connect(request):
 
     if request.method=="GET":
 
-        #usermac = request.GET['usermac']
-        usermac = "56:49:f9:a0:a2:97"
+        usermac = request.GET['usermac']
         print(usermac)
-        #magic = request.GET['magic']
-        #post = request.GET['post']
+        magic = request.GET['magic']
+        post = request.GET['post']
         try:
             value = mac_users.objects.filter(macaddrs__icontains=usermac)
+            value = value.__len__()
             print(value)
         except Exception as e:
             value = 0
@@ -45,4 +45,4 @@ def connect(request):
                     'passwd':passwd
                     })
         else: 
-            print("no")
+            return render (request,'mac-noauth.html')

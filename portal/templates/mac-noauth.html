@@ -1,0 +1,27 @@
+{% load static %}
+
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "bnc.css" %}">
+    <title>Portal Cautivo WIFI BNC Invitados</title>
+</head>
+<body>
+    <div class="login-page" style="display:grid">
+        <div class="form">
+        <form id = "guest" style="display:block" class="login-form" action ={{post}} method="post">
+            <img class ="bnclogo"src="{% static "bnclogo.png" %}"/>
+            {% csrf_token %}
+            <h1>Lo siento, excediste el límite de uso de nuestro Wifi </h1>
+        </form>
+            <p class="message">¡Portal diseñado e implementado por <a href="https://contel.com.ve"> Contel!</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}
