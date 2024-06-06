@@ -13,10 +13,10 @@ def connect(request):
     token = 'Bearer '+'f7m6mmbhpG9fjgmbh0h763hznH1h0Q'
     fg = Fortigate(f'{ip}:{port}', vdom, token) 
     fg.Status()
-    user_group = "GuestPiramides"
+    user_group = "GuestPortalCaptive"
     fg.AddUserToGroup(user_group,'algo@gmail.com')
     test = fg.GetGroupMembers(user_group)
-    
+
     if request.method=="GET":
         magic = request.GET['magic']
         post = request.GET['post']
