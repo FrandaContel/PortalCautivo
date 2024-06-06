@@ -16,19 +16,20 @@ def connect(request):
 
     if request.method=="GET":
 
-        usermac = request.GET['usermac']
+        #usermac = request.GET['usermac']
+        usermac = "56:49:f9:a0:a2:97"
         print(usermac)
-        magic = request.GET['magic']
-        post = request.GET['post']
+        #magic = request.GET['magic']
+        #post = request.GET['post']
         try:
-            value = mac_users.objects.filter(macaddr__icontains=usermac)
+            value = mac_users.objects.filter(macaddrs__icontains=usermac)
             print(value)
         except Exception as e:
             value = 0
             print(e)
             print("volvi por aca")
         if (value <=2):
-            mac_users.objects.create(macaddr= usermac)
+            mac_users.objects.create(macaddrs= usermac)
             fg = Fortigate(f'{ip}:{port}', vdom, token) 
             fg.Status()
             user_group = "GuestPortalCaptive"

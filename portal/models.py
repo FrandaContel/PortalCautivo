@@ -3,8 +3,8 @@ from django.utils.timezone import now
 # Create your models here.
 
 class mac_users(models.Model):
-    macaddr = models.CharField(max_length=20)
+    macaddrs = models.CharField(max_length=20)
     hora = models.DateTimeField(default=now)
 
     def __str__(self) -> str:
-        return super().__str__(self.macvalue + ' ' + self.hora)
+        return super().__str__(self.macaddrs + ' ' + self.hora)
