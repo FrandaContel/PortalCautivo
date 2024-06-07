@@ -13,15 +13,21 @@
 <body>
     <div class="login-page" style="display:grid">
         <div class="form">
-        <form id = "guest" style="display:block" class="login-form" action ={{post}} method="post">
+        <form id = "guest" style="display:block" class="login-form" method="post">
             <img class ="bnclogo"src="{% static "bnclogo.png" %}"/>
             {% csrf_token %}
-            <h1>Lo siento, excediste el límite de uso de nuestro Wi-Fi </h1>
+            <h1>¡En unos segundos serás redirigido! </h1>
         </form>
             <p class="message">¡Portal diseñado e implementado por <a href="https://contel.com.ve"> Contel!</a></p>
         </div>
     </div>
 </body>
 </html>
+<script>
+    window.setTimeout(function(){
+        // Move to a new location or you can do something else
+        window.location.href = "https://bncenlinea.com";
+    }, 3000);
+</script>
 
 {% endblock %}

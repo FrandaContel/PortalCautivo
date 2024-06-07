@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 80%;
+  padding: 2% 0 0;
+  margin: auto;
+  display:grid;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 60%;
+  margin: 0 auto 10%;
+  padding: 2%;
+  text-align: center;
+  box-shadow: 0 0 3rem 0 rgba(0, 0, 0, 0.5), 0 1rem 1rem 0 rgba(0, 0, 0, 0.30);
+  -webkit-animation: fadeinout 2s linear forwards;
+  animation: fadeinout 2s linear forwards;
+  border-radius: 2%;
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #fc5000;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  margin-top: 5px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 2%;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #241c54;
+}
+.form .message {
+  margin: 16px 0 0;
+  color: #000000;
+  font-size: 12px;
+}
+.form .message a {
+  color: #fc5000;
+  text-decoration: none;
+}
+body {
+  background: #00be4f; /* fallback for old browsers */
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+.title{
+  padding-top: 0%;
+  margin-top: 0%;
+}
+
+@media only screen and (min-width:1000px) {
+  .login-page {
+    width: 70%;
+    padding: 1% 0 0;
+    margin: auto;
+  }
+  .form {
+    max-width: 30%;
+  }
+}
+
+@media (max-width:999px){
+  .login-page {
+    width: 80%;
+    padding: 1% 0 0;
+    margin: auto;
+  }
+  .form {
+    max-width: 80%;
+  }
+}
+
+.video{
+  width: 100%;
+}
+
+.bnclogo {
+  max-width: 70%;
+}

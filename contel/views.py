@@ -3,19 +3,18 @@ from django.http import HttpResponse
 from django.utils import timezone
 import requests
 from .API import Fortigate 
-from .models import mac_users
+from .models import mac_users_contel
 # Create your views here.
 post = None
 magic = None
 
-def connect(request):
-    ip = "10.220.252.1"
+def connect_contel(request):
+    ip = "10.10.10.1"
     port = "39443"  
-    vdom = "F1K8SRVBL_P"
-    token = 'Bearer '+'fwN8jcG3gN65Gk8jH1nGd5fjxr753N'
-    #
-    #xcq9dq7nbg6spxfcgdy3z3rmHc7bjq Nuevo user API (contel)
-    #f7m6mmbhpG9fjgmbh0h763hznH1h0Q Viejo user API (viejo con muchos permisos)
+    vdom = "root"
+    token = 'Bearer '+'xcq9dq7nbg6spxfcgdy3z3rmHc7bjq'
+    #xcq9dq7nbg6spxfcgdy3z3rmHc7bjq Nuevo user API
+    #f7m6mmbhpG9fjgmbh0h763hznH1h0Q Viejo user API
     if request.method=="GET":
         usermac = request.GET['usermac']
         request.session['usermac'] = usermac
@@ -24,12 +23,11 @@ def connect(request):
         post = request.GET['post']
         request.session['post'] = post
         try:
-            value = mac_users.objects.filter(macaddrs__icontains=usermac,hora__gte=timezone.now().replace(hour=0, minute=0, second=0), hora__lte=timezone.now().replace(hour=23, minute=59, second=59))
+            value = mac_users_contel.objects.filter(macaddrs__icontains=usermac,hora__gte=timezone.now().replace(hour=0, minute=0, second=0), hora__lte=timezone.now().replace(hour=23, minute=59, second=59))
             value = value.__len__()
             print(value)
         except Exception as e:
             value = 0
-            print(e)
         if (value <=2):
             fg = Fortigate(f'{ip}:{port}', vdom, token) 
             fg.Status()
@@ -38,19 +36,19 @@ def connect(request):
             test = fg.GetGroupMembers(user_group)
             usuario = test
             passwd = 'fortinet'
-            return render(request,"auth.html",{ 
+            return render(request,"contel-auth.html",{ 
                     'magic':magic,
                     'post':post,
                     'username':usuario,
                     'passwd':passwd
                     })
         else: 
-            return render (request,'mac-noauth.html')
+            return render (request,'contel-mac-noauth.html')
 
-def redirect(request):
+def redirect_contel(request):
     usermac = request.session['usermac']
     print(usermac)
-    mac_users.objects.create(macaddrs=usermac)
+    mac_users_contel.objects.create(macaddrs=usermac)
     print("Redireccionando...")
-    return render(request,'redirect.html')
+    return render(request,'contel-redirect.html')
 

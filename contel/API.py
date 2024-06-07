@@ -146,7 +146,6 @@ class Fortigate:
             for i in range(0, len(members_info)):
                 if (members_info[i]['expiration']=='300'):
                     members.append(members_info[i]["user-id"])
-            print(members[0])
             return members[0]
     
     def AddUserToGroup(self, group, correo):
@@ -163,7 +162,6 @@ class Fortigate:
             'Authorization': self.token
             }
         response = requests.request("POST", url, headers=self.headers, data=repr(self.payload), verify=False)
-        print(response.text)
         print("usuario creado")
 
     def UserGuestEmail(self, group,user_name):
