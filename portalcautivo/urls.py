@@ -17,8 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from portal.views import *
+from contel.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bnc', connect, name="Auto-Login Guest User"),
+    path('redirect',redirect,name='Redirect'),
+    path('bnc2',connect_contel,name="Auto-Login Guest Contel"),
+    path('contel_redirect',redirect_contel, name="Redirect en Contel")
+    
 ]
+
+#path('bnc2',connect_contel,name="Auto-Login Guest Contel"),
+#path('contel_redirect',redirect_contel, name="Redirect en Contel")
