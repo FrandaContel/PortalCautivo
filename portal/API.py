@@ -74,7 +74,7 @@ class Fortigate:
         for i in range (0,len(response['results'])):
             print(response['results'][i]['name'])
     
-    def GetGroupMembers(self,name):
+    """def GetGroupMembers(self,name):
         
         url = self.api_url + f'cmdb/user/group/{name}'
         self.headers = {
@@ -89,7 +89,7 @@ class Fortigate:
             print(response['results'][0]['guest'][i]['expiration'])
             nombres.append(response['results'][0]['guest'][i]['user-id'])
         print(nombres)
-        return nombres
+        return nombres"""
 
     def CreateGroup(self):
         url = self.api_url + f'cmdb/user/group/'
@@ -180,7 +180,7 @@ class Fortigate:
                     }     
                 
         response = requests.request("POST", url, headers=self.headers, data=repr(payload), verify=False)
-        response = json.loads(response.text)
+        response = response.text
         return print(httpStatus(response))
 
     

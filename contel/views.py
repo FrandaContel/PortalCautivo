@@ -31,7 +31,7 @@ def connect_contel(request):
         if (value <=2):
             fg = Fortigate(f'{ip}:{port}', vdom, token) 
             fg.Status()
-            user_group = "GuestPortalCaptive"
+            user_group = "GuestContel"
             fg.AddUserToGroup(user_group,'algo@gmail.com')
             test = fg.GetGroupMembers(user_group)
             usuario = test
