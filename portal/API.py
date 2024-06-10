@@ -137,9 +137,10 @@ class Fortigate:
             self.headers = {
             'Authorization': self.token
             }
-
+            print("aqui arriba")
             response = requests.request("GET", url, headers=self.headers, data=self.payload, verify=False)
             #Convertimos la respuesta a formato json para manejar mejor los datos
+            print("okay")
             response = json.loads(response.text)
             #Se itera por los elementos de la lista "results", donde cada elemento contiene la informacion de un usuario
             members_info = response['results'][0]['guest'] #Se agregan los nombres de los usuarios a una lista vacia
