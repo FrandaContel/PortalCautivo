@@ -5,6 +5,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning # type: 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 from datetime import datetime
 #Clase 
+expiration = 300
 class Fortigate:
     def __init__(self, ip, vdom, token):
         ipaddr = 'https://' + ip
@@ -142,11 +143,10 @@ class Fortigate:
             #Convertimos la respuesta a formato json para manejar mejor los datos
             print("lol")
             response = json.loads(response.text)
-            print("test")
             #Se itera por los elementos de la lista "results", donde cada elemento contiene la informacion de un usuario
             members_info = response['results'][0]['guest'] #Se agregan los nombres de los usuarios a una lista vacia
             for i in range(0, len(members_info)):
-                if (members_info[i]['expiration']=='300'):
+                if (members_info[i]['expiration']==str(expiration)):
                     members.append(members_info[i]["user-id"])
             return members[0]
     
@@ -157,7 +157,7 @@ class Fortigate:
                         {
                         'correo':correo,
                         'password':'fortinet',
-                        'expiration':300
+                        'expiration':expiration
                         }
                         }
         self.headers = {
