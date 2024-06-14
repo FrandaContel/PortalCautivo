@@ -7,7 +7,7 @@ from .models import mac_users_contel
 # Create your views here.
 post = None
 magic = None
-
+"""
 def connect_contel(request):
     ip = "10.10.10.1"
     port = "39443"  
@@ -52,3 +52,4 @@ def redirect_contel(request):
     print("Redireccionando...")
     return render(request,'contel-redirect.html')
 
+"""

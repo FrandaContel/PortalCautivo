@@ -48,6 +48,7 @@ def connect(request):
             return render (request,'mac-noauth.html')
 
 def redirect(request):
+    print("bnc")
     usermac = request.session['usermac']
     print(usermac)
     mac_users.objects.create(macaddrs=usermac)
